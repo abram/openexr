@@ -16,7 +16,8 @@ OPENEXR_IMF_INTERNAL_NAMESPACE_SOURCE_ENTER
 
 namespace
 {
-#if defined(IMF_HAVE_SSE2) && defined(__GNUC__) && !defined(__e2k__)
+
+#if defined(IMF_HAVE_SSE2) && defined(__GNUC__) && (defined (__i386__) || defined(__x86_64__))
 
 // Helper functions for gcc + SSE enabled
 void
@@ -43,7 +44,7 @@ cpuid (int n, int& eax, int& ebx, int& ecx, int& edx)
     edx = cpuInfo[3];
 }
 
-#else // IMF_HAVE_SSE2 && __GNUC__ && !__e2k__
+#else // IMF_HAVE_SSE2 && __GNUC__ && (defined (__i386__) || defined(__x86_64__))
 
 // Helper functions for generic compiler - all disabled
 void
@@ -52,7 +53,7 @@ cpuid (int n, int& eax, int& ebx, int& ecx, int& edx)
     eax = ebx = ecx = edx = 0;
 }
 
-#endif // IMF_HAVE_SSE2 && __GNUC__ && !__e2k__
+#endif // IMF_HAVE_SSE2 && __GNUC__ && (defined (__i386__) || defined(__x86_64__))
 
 #ifdef IMF_HAVE_GCC_INLINEASM_X86
 
