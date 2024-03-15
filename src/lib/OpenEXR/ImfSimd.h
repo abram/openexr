@@ -53,7 +53,6 @@
 extern "C" {
 #ifdef IMF_HAVE_SSE2
 #    include <emmintrin.h>
-#    include <mmintrin.h>
 #endif
 
 #ifdef IMF_HAVE_SSE4_1
