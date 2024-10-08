@@ -43,40 +43,22 @@ set(OPENEXR_VERSION_API "${OpenEXR_VERSION_MAJOR}_${OpenEXR_VERSION_MINOR}")
 # For example, in "libOpenEXR.so.31.3.2.0", "libOpenEXR.so.31" is the SONAME
 # and ".3.2.0" identifies the corresponding library release.
 
-set(OPENEXR_LIB_SOVERSION 31)
+set(OPENEXR_LIB_SOVERSION 99)
 set(OPENEXR_LIB_VERSION "${OPENEXR_LIB_SOVERSION}.${OPENEXR_VERSION}") # e.g. "31.3.2.0"
 
 option(OPENEXR_INSTALL "Install OpenEXR libraries" ON)
 option(OPENEXR_INSTALL_TOOLS "Install OpenEXR tools" ON)
 
-# uninstall target
-if(NOT TARGET uninstall)
-  configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
-    IMMEDIATE @ONLY)
-  add_custom_target(uninstall
-    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
-endif()
-
-# uninstall target
-if(NOT TARGET uninstall)
-  configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
-    IMMEDIATE @ONLY)
-  add_custom_target(uninstall
-    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
-endif()
-
-# uninstall target
-if(NOT TARGET uninstall)
-  configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
-    IMMEDIATE @ONLY)
-  add_custom_target(uninstall
-    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
+if(OPENEXR_INSTALL OR OPENEXR_INSTALL_TOOLS)
+  # uninstall target
+  if(NOT TARGET uninstall)
+    configure_file(
+      "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
+      "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+      IMMEDIATE @ONLY)
+    add_custom_target(uninstall
+      COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
+  endif()
 endif()
 
 include(cmake/LibraryDefine.cmake)

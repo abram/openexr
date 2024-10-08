@@ -62,7 +62,6 @@ extern "C" {
 #ifdef IMF_HAVE_NEON
 #    include <arm_neon.h>
 #endif
-
 }
 
 #include "OpenEXRConfigInternal.h"

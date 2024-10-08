@@ -9,13 +9,17 @@ on:
   schedule:
     - cron: "0 4 * * 0"
 
+permissions:
+  contents: read
+
 jobs:
   snyk-scan-pr:
     runs-on: ubuntu-latest
+    if: github.repository == 'AcademySoftwareFoundation/openexr'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
-      - uses: snyk/actions/setup@master
+      - uses: snyk/actions/setup@b98d498629f1c368650224d6d212bf7dfa89e4bf # v0.4.0
         id: snyk
 
       - name: Snyk version

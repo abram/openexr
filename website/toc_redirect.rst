@@ -20,6 +20,11 @@
 .. toctree::
    :hidden:
 
+   python
+
+.. toctree::
+   :hidden:
+
    install
    
 .. toctree::
@@ -40,7 +45,7 @@
 .. toctree::
    :hidden:
 
-   _test_images/index
+   test_images/index
 
    
       
